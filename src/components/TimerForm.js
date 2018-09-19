@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { test } from '../utils/TimerCalc';
 
 class TimerForm extends Component {
   constructor(props) {
@@ -21,7 +22,7 @@ class TimerForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    debugger
+    test();
 
     // START_TIMER();
     // this.value = Math.abs(this.value)
