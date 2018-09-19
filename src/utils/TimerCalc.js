@@ -43,8 +43,9 @@ const render = () => {
   if (timeCounter <= 0){
     console.log('clearInterval')
     clearInterval(timerInterval);
+  } else {
+    decrementTime();
   }
-  decrementTime();
 }
 
 const setTimerInterval = () => {
