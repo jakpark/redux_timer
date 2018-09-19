@@ -16,6 +16,7 @@ class App extends Component {
         
         <Timer>
         </Timer>
+        <hr/>
         <TimerForm>
         </TimerForm>
 

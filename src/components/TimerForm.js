@@ -28,8 +28,10 @@ class TimerForm extends Component {
           Seconds
           <input type="number" onChange={this.handleInput} onKeyUp="if(this.value > 60) this.value = 60;" min="0" max="60" id="input-second"/>
         </label>
-
-        <button type="submit" onclick="START_TIMER()" value="Click"/>
+        <hr/>
+        <button type="submit" onclick="START_TIMER()" value="Click">
+        Start Timer
+        </button>
       </div>
     )
   }
