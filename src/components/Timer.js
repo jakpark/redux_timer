@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux';
+import { updateTimer } from '../actions/timerActions'
 
 class Timer extends Component {
   constructor(props) {
@@ -19,11 +22,11 @@ class Timer extends Component {
         </h1>
         <div>
           <span id="timer-mins">
-            { this.state.displayTime.mins }
+            { this.props.displayTime.mins }
           </span>
           :
           <span id="timer-secs">
-          { this.state.displayTime.secs }
+          { this.props.displayTime.secs }
           </span>
         </div>
     </div>
@@ -31,4 +34,12 @@ class Timer extends Component {
   }
 }
 
-export default Timer
+Timer.propTypes = {
+  displayTime: PropTypes.object.isRequired,
+}
+
+const mapStateToProps = state => ({
+  displayTime: state.timer.displaytime
+});
+
+export default connect(mapStateToProps, { updateTimer })(Timer)
