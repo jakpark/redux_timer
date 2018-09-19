@@ -13,17 +13,10 @@ class TimerForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  // onKeyUp="if(this.value > 15) this.value = 15;"
-  // onKeyUp="if(this.value > 60) this.value = 60;"
-
   handleInput(e) {
+    if ( e.target.value == "" ) { e.target.value = 0 }
     let parsedVal = parseInt(e.target.value);
-    if ( parsedVal > 60 ) { 
-      return 60;
-    } else if ( parsedVal < 0 ) { 
-      return 0;
-    }
-
+    
     this.setState({[e.target.name]: parsedVal });
   }
 
@@ -32,7 +25,6 @@ class TimerForm extends Component {
 
     const totalTime = totalTimeInSeconds(this.state.mins, this.state.secs);
     startTimer(totalTime);
-    // dispatch action
     // START_TIMER();
   }
 

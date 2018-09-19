@@ -5,7 +5,7 @@ class Timer extends Component {
     super(props);
     this.state = {
       displayTime: {
-        mins: 0,
+        mins: "00",
         secs: "00"
       }
     };

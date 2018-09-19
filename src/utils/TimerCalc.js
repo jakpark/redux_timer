@@ -23,6 +23,10 @@ const displayTime = () => {
   let mins = Math.floor(timeCounter / 60);
   let secs = timeCounter % 60;
   
+  if ( mins < 10 ) {
+    mins = "0" + mins;
+  }
+
   if ( secs < 10 ) {
     secs = "0" + secs;
   }
