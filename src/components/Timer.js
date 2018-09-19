@@ -4,7 +4,10 @@ class Timer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        displayTime: 0,
+      displayTime: {
+        mins: 0,
+        secs: 0
+      }
     };
   }
 
@@ -20,7 +23,7 @@ class Timer extends Component {
           </span>
           :
           <span id="timer-secs">
-          { this.state.displayTime.mins }
+          { this.state.displayTime.secs }
           </span>
         </div>
     </div>
