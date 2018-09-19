@@ -1,6 +1,13 @@
 import React, { Component } from 'react'
 
 class Timer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+        displayTime: 0,
+    };
+  }
+
   render() {
     return (
       <div class="countdown">
@@ -9,11 +16,11 @@ class Timer extends Component {
         </h1>
         <div class="">
           <span id="timer-mins">
-            0
+            { this.state.displayTime.mins }
           </span>
           :
           <span id="timer-secs">
-            0
+          { this.state.displayTime.mins }
           </span>
         </div>
     </div>
