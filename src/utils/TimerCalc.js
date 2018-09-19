@@ -7,19 +7,14 @@ const RESET_TIMER = () => {
   }
 }
 
-export const START_TIMER = () => {
-  // RESET_TIMER() 
-  
-  const minutes = parseInt(document.getElementById("input-minute").value) || 0; // prevent NaN
-  const seconds = parseInt(document.getElementById("input-second").value) || 0;
-  
-  totalTime = totalTimeInSeconds(minutes, seconds);
-  
-  countDownFn();
+
+export const totalTimeInSeconds = (mins, secs) => {
+  return mins * 60 + secs
 }
 
-const totalTimeInSeconds = (mins, secs) => {
-  return mins * 60 + secs
+export const START_TIMER = (totalTime) => {
+  // RESET_TIMER() 
+  countDownFn(totalTime);
 }
 
 const displayTime = (totalTime) => {
@@ -44,7 +39,7 @@ const timer = () => {
   decrementTime()
 }
 
-const countDownFn = () => {
+const countDownFn = (totalTime) => {
   intervalTimer = setInterval(timer, 1000)
 }
 
@@ -55,5 +50,3 @@ const decrementTime = () => {
 export const test = () => {
   console.log('test');
 }
-
-// export default displayTime();

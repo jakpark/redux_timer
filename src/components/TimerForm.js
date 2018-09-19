@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { test } from '../utils/TimerCalc';
+import { totalTimeInSeconds } from '../utils/TimerCalc';
 
 class TimerForm extends Component {
   constructor(props) {
@@ -17,15 +17,16 @@ class TimerForm extends Component {
   // onKeyUp="if(this.value > 60) this.value = 60;"
 
   handleInput(e) {
-    this.setState({[e.target.name]: e.target.value })
+    this.setState({[e.target.name]: parseInt(e.target.value) })
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    test();
 
+    const totalTime = totalTimeInSeconds(this.state.mins, this.state.secs)
+    
+    // dispatch action
     // START_TIMER();
-    // this.value = Math.abs(this.value)
   }
 
   render() {
