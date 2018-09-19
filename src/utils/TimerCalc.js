@@ -3,24 +3,24 @@ let timeCounter
 
 const resetTimer = () => {
   if (timerInterval !== undefined){
-    clearInterval(timerInterval)
+    clearInterval(timerInterval);
   }
 }
 
 
 export const totalTimeInSeconds = (mins, secs) => {
-  return mins * 60 + secs
+  return mins * 60 + secs;
 }
 
 export const startTimer = (totalTime) => {
-  // resetTimer()
+  resetTimer()
   timeCounter = totalTime;
   setTimerInterval();
 }
 
 const displayTime = () => {
-  let mins = Math.floor(timeCounter / 60)
-  let secs = timeCounter % 60
+  let mins = Math.floor(timeCounter / 60);
+  let secs = timeCounter % 60;
   
   return { mins: mins, secs: secs }
 }
@@ -32,8 +32,8 @@ const render = () => {
   const timerMin = document.getElementById("timer-mins");
   const timerSec = document.getElementById("timer-secs");
   // add test for 1 minute 1 second
-  timerMin.innerHTML = displayTime(timeCounter).mins
-  timerSec.innerHTML = displayTime(timeCounter).secs
+  timerMin.innerHTML = displayTime(timeCounter).mins;
+  timerSec.innerHTML = displayTime(timeCounter).secs;
   // debugger
   if (timeCounter <= 0){
     console.log('clearInterval')
@@ -43,7 +43,7 @@ const render = () => {
 }
 
 const setTimerInterval = () => {
-  timerInterval = setInterval(render, 1000)
+  timerInterval = setInterval(render, 1000);
 }
 
 const decrementTime = () => {
