@@ -1,5 +1,9 @@
-import React, { Component } from 'react'
-import { totalTimeInSeconds, startTimer } from '../utils/TimerCalc';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
+import { totalTimeInSeconds } from '../utils/TimerCalc';
+import { dispatchTimer } from '../actions/timerActions';
 
 class TimerForm extends Component {
   constructor(props) {
@@ -24,8 +28,7 @@ class TimerForm extends Component {
     e.preventDefault();
 
     const totalTime = totalTimeInSeconds(this.state.mins, this.state.secs);
-    startTimer(totalTime);
-    // START_TIMER();
+    this.props.dispatchTimer(totalTime);
   }
 
   render() {
@@ -57,4 +60,8 @@ class TimerForm extends Component {
   }
 }
 
-export default TimerForm;
+TimerForm.propTypes = {
+  dispatchTimer: PropTypes.func.isRequired
+}
+
+export default connect(null, { dispatchTimer })(TimerForm);
