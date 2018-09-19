@@ -10,11 +10,11 @@ class Timer extends Component {
 
   render() {
     return (
-      <div class="countdown">
+      <div>
         <h1>
           Time left (MM:SS):
         </h1>
-        <div class="">
+        <div>
           <span id="timer-mins">
             { this.state.displayTime.mins }
           </span>

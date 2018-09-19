@@ -4,35 +4,45 @@ class TimerForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        title: '',
-        body: ''
+        mins: '',
+        secs: ''
     };
 
     this.handleInput = this.handleInput.bind(this);
-    // this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  // onKeyUp="if(this.value > 15) this.value = 15;"
+  // onKeyUp="if(this.value > 60) this.value = 60;"
+
   handleInput(e) {
+    // this.value = Math.abs(this.value)
+  }
+  handleSubmit(e) {
+    e.preventDefault();
+    debugger
+
+    // START_TIMER();
     // this.value = Math.abs(this.value)
   }
 
   render() {
     return (
-      <div class="user-input">
+      <form onSubmit={this.handleSubmit}>
         <h1>Input Time:</h1>
-        <label for="">
+        <label>
           Minute
-          <input type="number" onChange={this.handleInput} onKeyUp="if(this.value > 15) this.value = 15;" min="0" max="15" id="input-minute"/>
+          <input type="number" onChange={this.handleInput} value={this.mins} min="0" max="15" id="input-minute"/>
         </label>
-        <label for="">
+        <label>
           Seconds
-          <input type="number" onChange={this.handleInput} onKeyUp="if(this.value > 60) this.value = 60;" min="0" max="60" id="input-second"/>
+          <input type="number" onChange={this.handleInput} value={this.secs} min="0" max="60" id="input-second"/>
         </label>
         <hr/>
-        <button type="submit" onclick="START_TIMER()" value="Click">
+        <button type="submit" value="Click">
         Start Timer
         </button>
-      </div>
+      </form>
     )
   }
 }
