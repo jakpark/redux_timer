@@ -16,8 +16,9 @@ class TimerForm extends Component {
   // onKeyUp="if(this.value > 60) this.value = 60;"
 
   handleInput(e) {
-    // this.value = Math.abs(this.value)
+    this.setState({[e.target.name]: e.target.value })
   }
+
   handleSubmit(e) {
     e.preventDefault();
     debugger
@@ -28,21 +29,29 @@ class TimerForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <div>
         <h1>Input Time:</h1>
-        <label>
-          Minute
-          <input type="number" onChange={this.handleInput} value={this.mins} min="0" max="15" id="input-minute"/>
-        </label>
-        <label>
-          Seconds
-          <input type="number" onChange={this.handleInput} value={this.secs} min="0" max="60" id="input-second"/>
-        </label>
-        <hr/>
-        <button type="submit" value="Click">
-        Start Timer
-        </button>
-      </form>
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Minute
+            <input type="number" 
+                  name="mins" 
+                  onChange={this.handleInput} 
+                  value={this.state.mins} min="0" max="15"/>
+          </label>
+          <label>
+            Seconds
+            <input type="number" 
+                  name="secs"  
+                  onChange={this.handleInput} 
+                  value={this.state.secs} min="0" max="60"/>
+          </label>
+          <hr/>
+          <button type="submit" value="Click">
+          Start Timer
+          </button>
+        </form>
+      </div>
     )
   }
 }
