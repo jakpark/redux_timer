@@ -1,9 +1,8 @@
-let totalTime;
-let intervalTimer
+let timerInterval
 
-const RESET_TIMER = () => {
-  if (intervalTimer !== undefined){
-    clearInterval(intervalTimer)
+const resetTimer = () => {
+  if (timerInterval !== undefined){
+    clearInterval(timerInterval)
   }
 }
 
@@ -12,12 +11,13 @@ export const totalTimeInSeconds = (mins, secs) => {
   return mins * 60 + secs
 }
 
-export const START_TIMER = (totalTime) => {
-  // RESET_TIMER() 
-  countDownFn(totalTime);
+export const startTimer = (totalTime) => {
+  resetTimer() 
+  setTimerInterval(totalTime);
 }
 
 const displayTime = (totalTime) => {
+  console.log('displayTime');
   let mins = Math.floor(totalTime / 60)
   let secs = totalTime % 60
   
@@ -25,25 +25,26 @@ const displayTime = (totalTime) => {
 }
 
 
-const timer = () => {
+const renderTime = (totalTime) => {
+  console.log('rendertime');
+
   const timerMin = document.getElementById("timer-mins");
   const timerSec = document.getElementById("timer-secs");
-  
   // add test for 1 minute 1 second
-  timerMin.innerHTML = displayTime().mins
-  timerSec.innerHTML = displayTime().secs
-  
+  timerMin.innerHTML = displayTime(totalTime).mins
+  timerSec.innerHTML = displayTime(totalTime).secs
+  debugger
   if (totalTime <= 0){
-    clearInterval(intervalTimer);
+    clearInterval(timerInterval);
   }
-  decrementTime()
+  decrementTime(totalTime);
 }
 
-const countDownFn = (totalTime) => {
-  intervalTimer = setInterval(timer, 1000)
+const setTimerInterval = (totalTime) => {
+  timerInterval = setInterval(renderTime(totalTime), 1000)
 }
 
-const decrementTime = () => {
+const decrementTime = (totalTime) => {
   totalTime--;
 }
 

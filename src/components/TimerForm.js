@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { totalTimeInSeconds } from '../utils/TimerCalc';
+import { totalTimeInSeconds, startTimer } from '../utils/TimerCalc';
 
 class TimerForm extends Component {
   constructor(props) {
@@ -24,7 +24,7 @@ class TimerForm extends Component {
     e.preventDefault();
 
     const totalTime = totalTimeInSeconds(this.state.mins, this.state.secs)
-    
+    startTimer(totalTime);
     // dispatch action
     // START_TIMER();
   }
