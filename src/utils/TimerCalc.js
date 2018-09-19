@@ -13,8 +13,9 @@ export const totalTimeInSeconds = (mins, secs) => {
 }
 
 export const startTimer = (totalTime) => {
-  resetTimer()
+  resetTimer();
   timeCounter = totalTime;
+  render();
   setTimerInterval();
 }
 
@@ -22,6 +23,10 @@ const displayTime = () => {
   let mins = Math.floor(timeCounter / 60);
   let secs = timeCounter % 60;
   
+  if ( secs < 10 ) {
+    secs = "0" + secs;
+  }
+
   return { mins: mins, secs: secs }
 }
 
